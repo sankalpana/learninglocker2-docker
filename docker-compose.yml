@@ -1,0 +1,31 @@
+version: '2'
+services:
+  learninglocker:
+    build: .
+    image: learninglocker:latest
+    links:
+      - redis
+      - mongo
+    depends_on:
+      - redis
+      - mongo
+    ports:
+      - "80:3000"
+      - "8080:8080"
+      - "8081:8081"
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles
+
+  redis:
+    image: redis
+    ports:
+        - "6379:6379"
