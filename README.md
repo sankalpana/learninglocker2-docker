@@ -4,7 +4,7 @@ This is a dirty and quick dockerized version of Learning Locker 2 used for testi
 
 Is based on the installation guides at http://docs.learninglocker.net/guides-custom-installation/
 
-Official images of Mongo and Redis are used, no nginx is used.
+Official images of Mongo, Redis and nginx are used. The nginx docker use HTTPS, it's neccessary to put the certificates in the root folder of the project, to only port used to connect to the LL webpage, xapi and api endpoints is 90. 
 
 ## Usage
 
